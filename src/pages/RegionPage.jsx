@@ -48,14 +48,16 @@ const RegionPage = () => {
           {servers.map((server, index) => (
             <div key={index} className="server-card">
               <h3>{server.server_name}</h3>
-              <p><strong>IP :</strong> <span>{server.ip_address}</span></p>
-<p><strong>Site Code :</strong> <span>{server.site_code}</span></p>
-<p><strong>Location :</strong> <span>{server.location}</span></p>
-<p><strong>Support Group :</strong> <span>{server.support_group}</span></p>
-<p><strong>Status :</strong> <span>{server.server_status}</span></p>
-<p><strong>Class :</strong> <span>{server.server_class}</span></p>
-<p><strong>Priority :</strong> <span>{server.priority}</span></p>
-
+                <p><strong>IP :</strong> <span>{server.ip_address}</span></p>
+                <p><strong>Owner:</strong> <span>{server.owner}</span></p>
+                <p><strong>Application Group:</strong> <span>{server.application_group}</span></p>
+                <p><strong>Site Code :</strong> <span>{server.site_code}</span></p>
+                <p><strong>Location :</strong> <span>{server.location}</span></p>
+                <p><strong>Support Group :</strong> <span>{server.support_group}</span></p>
+                <p><strong>Status :</strong> <span>{server.server_status}</span></p>
+                <p><strong>Class :</strong> <span>{server.server_class}</span></p>
+                <p><strong>Priority :</strong> <span>{server.priority}</span></p>
+                
             </div>
           ))}
         </div>

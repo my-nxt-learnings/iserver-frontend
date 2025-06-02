@@ -149,8 +149,9 @@ const Home = () => {
                     {searchResults.map((server) => (
                     <div key={server.server_name} className="server-card">
                         <h4>{server.server_name}</h4>
-                        <p>{server.ip_address}</p>
-                        <p>{server.site_code} - {server.location}</p>
+                        <p><strong>IP</strong> : {server.ip_address}</p>
+                        <p><strong>Owner</strong> : {server.owner}</p>
+                        <p><strong>Application</strong> : {server.application_group}</p>
                     </div>
                     ))}
                 </div>
@@ -294,6 +295,21 @@ const Home = () => {
         value={formData.server_class}
         onChange={handleInputChange}
       />
+      <input
+        type="text"
+        name="owner"
+        placeholder="Owner"
+        value={formData.owner}
+        onChange={handleInputChange}
+        />
+
+        <input
+        type="text"
+        name="application_group"
+        placeholder="Application Group"
+        value={formData.application_group}
+        onChange={handleInputChange}
+        />
     </div>
 
     <button type="submit" className="submit-btn">Add Server</button>
