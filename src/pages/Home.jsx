@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAllServers ,addServer} from '../api';
-import '../styles/Home.css';
+import '../styles/home.css';
 import { useNavigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell } from 'recharts';
 
