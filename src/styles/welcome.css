@@ -1,0 +1,44 @@
+.welcome-container {
+    height: 100vh;
+    background: linear-gradient(to right, #2c3e50, #3498db);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: "Segoe UI", sans-serif;
+    transition: background 0.5s ease;
+  }
+  
+  .welcome-content {
+    text-align: center;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .welcome-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .welcome-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .welcome-content button {
+    background-color: white;
+    color: #3498db;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s;
+  }
+  
+  .welcome-content button:hover {
+    transform: scale(1.05);
+    background-color: #ecf0f1;
+  }
+  
