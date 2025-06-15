@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchAllServers ,addServer} from '../api';
+import { fetchAllServers ,addServer, uploadCSV} from '../api';
 import '../styles/home.css';
 import { useNavigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell } from 'recharts';
@@ -29,6 +29,8 @@ const Home = () => {
   const [submitMessage, setSubmitMessage] = useState('');
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [loadingRegions, setLoadingRegions] = useState(true);
+  const [uploadMessage, setUploadMessage] = useState('');
+
 
   const navigate = useNavigate();
 
@@ -216,106 +218,139 @@ const Home = () => {
 
         <div className="add-server-section">
           <h2 style={{color:"#2C3E50"}}>Add New Server</h2>
+          
           <div className="add-server-form-section">
-  <form className="add-server-form" onSubmit={handleSubmit}>
-    <div className="form-row">
-      <input
-        type="text"
-        name="server_name"
-        placeholder="Server Name"
-        value={formData.server_name}
-        onChange={handleInputChange}
-        required
-      />
-      <input
-        type="text"
-        name="ip_address"
-        placeholder="IP Address"
-        value={formData.ip_address}
-        onChange={handleInputChange}
-        required
-      />
-    </div>
 
-    <div className="form-row">
-      <input
-        type="text"
-        name="site_code"
-        placeholder="Site Code"
-        value={formData.site_code}
-        onChange={handleInputChange}
-        required
-      />
-      <input
-        type="text"
-        name="location"
-        placeholder="Location"
-        value={formData.location}
-        onChange={handleInputChange}
-        required
-      />
-    </div>
+            <form className="add-server-form" onSubmit={handleSubmit}>
+                <div className="form-row">
+                <input
+                    type="text"
+                    name="server_name"
+                    placeholder="Server Name"
+                    value={formData.server_name}
+                    onChange={handleInputChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="ip_address"
+                    placeholder="IP Address"
+                    value={formData.ip_address}
+                    onChange={handleInputChange}
+                    required
+                />
+                </div>
 
-    <div className="form-row">
-      <select name="region" value={formData.region} onChange={handleInputChange} required>
-        <option value="">Select Region</option>
-        <option value="Greater Asia">Greater Asia</option>
-        <option value="EMEA">EMEA</option>
-        <option value="Latin America">Latin America</option>
-        <option value="North America">North America</option>
-      </select>
-      <select name="priority" value={formData.priority} onChange={handleInputChange} required>
-        <option value="">Priority</option>
-        <option value="Critical">Critical`</option>
-        <option value="High">High</option>
-        <option value="Medium">Medium</option>
-        <option value="Low">Low</option>
-      </select>
-    </div>
+                <div className="form-row">
+                <input
+                    type="text"
+                    name="site_code"
+                    placeholder="Site Code"
+                    value={formData.site_code}
+                    onChange={handleInputChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="location"
+                    placeholder="Location"
+                    value={formData.location}
+                    onChange={handleInputChange}
+                    required
+                />
+                </div>
 
-    <div className="form-row">
-      <input
-        type="text"
-        name="support_group"
-        placeholder="Support Group"
-        value={formData.support_group}
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
-        name="server_status"
-        placeholder="Server Status"
-        value={formData.server_status}
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
-        name="server_class"
-        placeholder="Server Class"
-        value={formData.server_class}
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
-        name="owner"
-        placeholder="Owner"
-        value={formData.owner}
-        onChange={handleInputChange}
-        />
+                <div className="form-row">
+                <select name="region" value={formData.region} onChange={handleInputChange} required>
+                    <option value="">Select Region</option>
+                    <option value="Greater Asia">Greater Asia</option>
+                    <option value="EMEA">EMEA</option>
+                    <option value="Latin America">Latin America</option>
+                    <option value="North America">North America</option>
+                </select>
+                <select name="priority" value={formData.priority} onChange={handleInputChange} required>
+                    <option value="">Priority</option>
+                    <option value="Critical">Critical`</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+                </div>
 
-        <input
-        type="text"
-        name="application_group"
-        placeholder="Application Group"
-        value={formData.application_group}
-        onChange={handleInputChange}
-        />
-    </div>
+                <div className="form-row">
+                <input
+                    type="text"
+                    name="support_group"
+                    placeholder="Support Group"
+                    value={formData.support_group}
+                    onChange={handleInputChange}
+                />
+                <input
+                    type="text"
+                    name="server_status"
+                    placeholder="Server Status"
+                    value={formData.server_status}
+                    onChange={handleInputChange}
+                />
+                <input
+                    type="text"
+                    name="server_class"
+                    placeholder="Server Class"
+                    value={formData.server_class}
+                    onChange={handleInputChange}
+                />
+                <input
+                    type="text"
+                    name="owner"
+                    placeholder="Owner"
+                    value={formData.owner}
+                    onChange={handleInputChange}
+                    />
 
-    <button type="submit" className="submit-btn">Add Server</button>
-    {submitMessage && <p className="submit-message">{submitMessage}</p>}
-  </form>
-</div>
+                    <input
+                    type="text"
+                    name="application_group"
+                    placeholder="Application Group"
+                    value={formData.application_group}
+                    onChange={handleInputChange}
+                    />
+                </div>
+
+                <button type="submit" className="submit-btn">Add Server</button>
+                {submitMessage && <p className="submit-message">{submitMessage}</p>}
+                <p className='or'>or</p>
+                <div className="csv-upload">
+                    <p  style={{fontWeight:800, fontSize:15}}>Upload CSV file</p>
+            <input
+                type="file"
+                accept=".csv"
+                className='csv-input'
+                onChange={async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                try {
+                    await uploadCSV(file);
+                    setUploadMessage("✅ CSV uploaded successfully!");
+                    // refresh servers
+                    const all = await fetchAllServers();
+                    setServers(all);
+                    // update region counts too
+                    const regionMap = {};
+                    all.forEach((server) => {
+                    regionMap[server.region] = (regionMap[server.region] || 0) + 1;
+                    });
+                    setRegions(Object.entries(regionMap).map(([region, count]) => ({ region, count })));
+                } catch (err) {
+                    console.error(err);
+                    setUploadMessage("❌ Failed to upload CSV.");
+                }
+                }}
+            />
+            {uploadMessage && <p className="upload-message">{uploadMessage}</p>}
+            </div>
+            </form>
+        </div>
         </div>
       </main>
     </div>

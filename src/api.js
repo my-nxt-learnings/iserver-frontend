@@ -25,3 +25,36 @@ export const addServer = async (serverData) => {
     if (!res.ok) throw new Error('Failed to add server');
     return res.json();
   };
+
+  /*export const uploadCSV = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+  
+    const res = await fetch(`${BASE_URL}/upload`, {
+      method: "POST",
+      body: formData,
+    });
+  
+    if (!res.ok) throw new Error("Failed to upload CSV");
+    return res.json();
+  };*/
+
+  export const uploadCSV = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+  
+    const res = await fetch(`${BASE_URL}/upload`, {
+      method: "POST",
+      body: formData,
+    });
+  
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error("Upload error response:", errorText);
+      throw new Error("Failed to upload CSV");
+    }
+  
+    return res.json();
+  };
+  
+  

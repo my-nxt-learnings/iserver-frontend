@@ -153,9 +153,33 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+
+  .csv-upload{
+    background-color: white;
+    padding: 12px;
+    border: 2px solid #2c3e50;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 10px;
+    margin: auto;
+    width: 98%;
+    color: #2C3E50;
+  }
+
+  .or{
+    color: #2C3E50;
+    font-weight: bold;
+  }
+
+  .csv-input{
+    border: none;
+  }
   
-  .submit-btn:hover {
+  .submit-btn:hover, .csv-upload:hover {
     background-color: #34495e;
+    color: white;
   }
   
   .submit-message {
@@ -212,6 +236,8 @@
     font-size: 16px;
     text-align: center;
   }
+
+
   
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
